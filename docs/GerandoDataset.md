@@ -4,7 +4,7 @@
 
 Para gerar o histórico da conversa de um grupo:
 
-1. Abra o grupo no celular ou whatsapp web
+1. Abra o grupo no celular
 1. Clique em "Mais".
 1. Clique em "Exportar conversa"
 1. Selecione "Sem Mídia"
