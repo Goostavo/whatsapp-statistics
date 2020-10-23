@@ -1,0 +1,25 @@
+{
+  "name": "zapzap-statistics",
+  "version": "1.0.0",
+  "description": "Whatsapp chat analytics",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Goostavo/whatsapp-statistics.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Goostavo/whatsapp-statistics/issues"
+  },
+  "homepage": "https://github.com/Goostavo/whatsapp-statistics#readme",
+  "dependencies": {
+    "whatsapp-chat-parser": "^3.0.2"
+  }
+}
