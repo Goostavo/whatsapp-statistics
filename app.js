@@ -32,6 +32,7 @@ async function runSync(){
   } catch (err) {
     console.log(err);
   }
+
   console.log('Loaded:', history.length, 'messages.');
   console.log('Loaded:', users.length, 'users.');
   console.log('History start:', history[0].date, 'end:', history[history.length - 1].date);

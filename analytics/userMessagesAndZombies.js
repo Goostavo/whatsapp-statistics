@@ -4,6 +4,7 @@
 */
 const top10UsersByMessage = require('./top10usersByMessage');
 const top10usersByLength = require('./top10usersByLength');
+const zombieList = require('./zombieList');
 
 module.exports = function(users, messages) {
   let messageCount = {};
@@ -26,5 +27,6 @@ module.exports = function(users, messages) {
   // Run specific Analytics
   top10UsersByMessage(messageCount);
   top10usersByLength(lengthCount);
+  zombieList(messageCount);
 
 };
