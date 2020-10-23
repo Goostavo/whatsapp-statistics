@@ -14,7 +14,7 @@ module.exports = function(lengthCount) {
   }
   countArray = countArray.sort(compare).reverse();
   // Print top 10 users in friendly format
-  console.log('Top 10 spammers do grupo por contagem de mensagens:')
+  console.log('Top 10 spammers do grupo por contagem de caracteres:')
   for (let userCount = 0; userCount < 10; userCount++){
     console.log('@' + countArray[userCount].author, ':', countArray[userCount].count)
   }
