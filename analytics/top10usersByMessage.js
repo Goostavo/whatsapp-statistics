@@ -1,15 +1,15 @@
 /*
 * Analytics that:
-* Shows top 10 users by lengthCount
+* Shows top 10 users by messageCount
 */
 
-module.exports = function(lengthCount) {
+module.exports = function(messageCount) {
   // Top 10 ranking
   let countArray = [];
-  for (let key in lengthCount){
+  for (let key in messageCount){
     countArray.push({
       'author' : key,
-      'count': lengthCount[key]
+      'count': messageCount[key]
     });
   }
   countArray = countArray.sort(compare).reverse();
