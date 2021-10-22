@@ -15,7 +15,7 @@ const fs = require('fs');
 const whatsapp = require('whatsapp-chat-parser');
 const parseUserList = require('./parseUserList');
 const elonMuskers = require('./analytics/elonMuskers');
-
+const thanks = require('./analytics/thankers');
 // Analytics
 const userMessagesAndZombies = require('./analytics/userMessagesAndZombies');
 
@@ -41,6 +41,7 @@ async function runSync(){
   //Run analytics
   userMessagesAndZombies(users, history);
   elonMuskers(history);
+  thanks(history);
 }
 
 runSync();
