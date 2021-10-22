@@ -20,14 +20,21 @@ const ignoredWords = [
     'de', 'que', 'e', 'o', 'a', 'do', 'para', 'é', 'em', 'um', 'com', 'da', 'no', 'não', 'uma', 'omitted', 'na', 'mais', 'tem', 'se', 'pra', 'por',
     '‎image', 'os', 'mas', 'as', '-', 'O', 'ou', 'como', 'muito', 'aqui', 'ser', 'já', 'está', 'me', 'A', 'eu', 'isso', 'E','Mas', 'sobre', 'dos',
     'vai', 'só', 'ao', 'Se', 'Não', 'foi', 'quem', 'bem', 'Eu', 'ter', 'das', 'você', 'esse', 'são', 'pelo', 'também', 'até', 'ainda',
-    'alguém', 'pode', 'fazer', 'dia', 'É', 'nos', 'sua', 'mesmo', 'estão', 'acho', 'bom', 'essa', 'seu', 'meu', 'sem', 'eles', 'tudo',
+    'alguém', 'pode', 'fazer', 'É', 'nos', 'sua', 'mesmo', 'estão', 'bom', 'essa', 'seu', 'meu', 'sem', 'eles', 'tudo',
     'pela', 'minha', 'te', 'nosso', 'lá', 'to', 'Quem', 'Tem', 'aí', 'alguma', 'boa', 'vocês', 'estou', 'melhor', 'vc',
     'algum', 'faz', 'tenho', 'agora', 'todo', 'the', 'ver', 'q', 'à', 'nao', 'tá', 'was', 'será', 'Vou', 'Boa', 'este', 'falar', 'for', 'Já',
     'message', 'vou', 'link', 'quando', 'dar', 'algo', 'Acho', 'temos', '31', 'parte', 'Que', 'apenas', 'nem', 'Para', 'há', 'outros', 'Isso', 'menos',
-    'coisa', 'Valeu', 'Como', '‎This', 'tiver', 'cada', 'Só', 'tipo', 'sei', 'No', '2', 'entre', 'esta', 'depois', 'caso', 'nas', 'pois', 'Bom', 'Por',
+    'Como', '‎This', 'tiver', 'cada', 'Só', 'tipo', 'sei', 'No', '2', 'entre', 'esta', 'depois', 'caso', 'nas', 'pois', 'Bom', 'Por',
     'quer', 'seria', 'Estou', 'pro', 'porque', 'and', 'qual', '?', , 'Um', 'seja', '3', 'às', 'outras', 'eh', '1', 'Na', 'of', 'onde', 'Em', 'deleted.',
-    'Muito', 'estamos', 'era', 'Vamos', ',','pouco', 'muita', 'sempre', 'cara', 'demais', 'qualquer', 'vamos', 'outro', 'nossa','Estamos', 'alguns'
+    'Muito', 'estamos', 'era', 'Vamos', ',','pouco', 'muita', 'sempre', 'cara', 'demais', 'qualquer', 'vamos', 'outro', 'nossa','Estamos', 'alguns',
+    'mídia', '<Arquivo', 'oculto>', 'Mensagem', 'apagada', ':', 'todos', 'Alguém', 'deste', 'sendo', '(arquivo', 'anexado)', 'podem', 'com', 'Com',
+    'As', 'Você', 'tinha', 'Ou', 'vagas', 'nada', 'nova'
 ];
+
+const mergedWords = [
+    ['empresa', 'empresas']
+]
+
 
 
 
@@ -38,11 +45,12 @@ module.exports = function(messages) {
         // Split by space removing multiple spaces and blank strings.
         const wordArray = message.message.split(/(\s+)/).filter( function(e) { return e.trim().length > 0; } );
         
-        for (const word of wordArray) {
+        for (let word of wordArray) {
             if (ignoredWords.includes(word)) {
                 continue;
             }
 
+            word = word.toLowerCase();
             if (!wordCount[word]) {
                 wordCount[word] = 1;
             } else {
