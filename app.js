@@ -20,6 +20,7 @@ const userMessagesAndZombies = require('./analytics/userMessagesAndZombies');
 const elonMuskers = require('./analytics/elonMuskers');
 const wordCloud = require('./analytics/wordCloud');
 const thanks = require('./analytics/thankers');
+const stickers = require('./analytics/stickers')
 
 
 var myArgs = process.argv.slice(2);
