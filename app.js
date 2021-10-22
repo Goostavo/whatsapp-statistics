@@ -33,8 +33,17 @@ if (myArgs[0] == 'help'){
 }
 
 console.log('Loading files!')
-const rawHistory = fs.readFileSync('zapzap.txt', 'utf8');
-const rawUsers = fs.readFileSync('userList.txt', 'utf8');
+
+let rawHistory;
+let rawUsers;
+
+try {
+  rawHistory = fs.readFileSync('zapzap.txt', 'utf8');
+  rawUsers = fs.readFileSync('userList.txt', 'utf8');
+} catch (e) {
+    console.log('Menssagem: '+ e.message);
+    return ;
+}
 
 async function runSync(){
   console.log('Parsing files')
