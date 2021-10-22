@@ -19,6 +19,18 @@ const parseUserList = require('./parseUserList');
 const userMessagesAndZombies = require('./analytics/userMessagesAndZombies');
 const elonMuskers = require('./analytics/elonMuskers');
 const wordCloud = require('./analytics/wordCloud');
+const thanks = require('./analytics/thankers');
+
+
+var myArgs = process.argv.slice(2);
+
+if (myArgs[0] == 'help'){
+    console.log('\nzapzap.txt deve ser no seguinte formato:');
+    console.log('‎[15/06/16 14:07:29] Fausto Silva: ta pegando fogo BICHO!');
+    console.log('\nuserList.txt deve conter os contatos separados por virgula')
+    console.log('Thiago Ventura, Fausto, +55 69 99999-9999\n');
+    return ;
+}
 
 console.log('Loading files!')
 const rawHistory = fs.readFileSync('zapzap.txt', 'utf8');
@@ -43,6 +55,7 @@ async function runSync(){
   userMessagesAndZombies(users, history);
   elonMuskers(history);
   wordCloud(history);
+  thanks(history);
 }
 
 runSync();
