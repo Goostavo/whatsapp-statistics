@@ -8,7 +8,7 @@ module.exports = function(history) {
     let kindPeople = {};
     
     for (let entry of history){
-      if (entry.message.match(/Obrigado|obrigado|obg|thx|thanks|thank|brigado|obrigado!|Obrigado!|obrigado!|obg!|thx!|thanks!|thank!|brigado!/)) {
+      if (entry.message.match(/Obrigado|Obrigada|obrigado|obrigada|Valeu|valeu|vlw|obg|thx|thanks|thank|brigado|brigada|obrigado!|obrigada!|Obrigado!|Obrigada!|obg!|thx!|thanks!|thank!|brigado!|brigada!/)) {
         thanksMessages += 1;
         
         if (!kindPeople[entry.author]){
