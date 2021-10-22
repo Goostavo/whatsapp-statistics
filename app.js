@@ -14,10 +14,13 @@
 const fs = require('fs');
 const whatsapp = require('whatsapp-chat-parser');
 const parseUserList = require('./parseUserList');
-const elonMuskers = require('./analytics/elonMuskers');
 
 // Analytics
 const userMessagesAndZombies = require('./analytics/userMessagesAndZombies');
+const elonMuskers = require('./analytics/elonMuskers');
+const wordCloud = require('./analytics/wordCloud');
+const thanks = require('./analytics/thankers');
+
 
 var myArgs = process.argv.slice(2);
 
@@ -60,6 +63,8 @@ async function runSync(){
   //Run analytics
   userMessagesAndZombies(users, history);
   elonMuskers(history);
+  wordCloud(history);
+  thanks(history);
 }
 
 runSync();
