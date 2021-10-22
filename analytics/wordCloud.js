@@ -9,6 +9,8 @@
 * url: "not used, leave blank"
 */
 const COLORS = require('../COLORS');
+const fs = require('fs');
+
 
 
 /******************************
@@ -73,7 +75,28 @@ module.exports = function(messages) {
     });
 
     wordCountArray = wordCountArray.slice(0, 49);
-    console.log(wordCountArray)
+    const csvOutput = obj2csv(wordCountArray);
+
+    fs.writeFileSync('output/wordcloud.csv', csvOutput);
+
 
     return wordCountArray;
+}
+
+
+/*******************8
+ * easy object 2 CSV
+ */
+ function obj2csv(arr) {
+    let claves = Object.keys(arr[0])
+    let rows = claves.join(";") + "\r\n";
+    arr.forEach((row) => {
+      let nrow = [];
+      claves.forEach((clave) => {
+        let valor = JSON.stringify(row[clave]);
+        nrow.push(valor.split(";").join(" ").split(",").join(" "));
+      });
+      rows = rows + nrow.join(";") + "\r\n";
+    });
+    return rows;
 }

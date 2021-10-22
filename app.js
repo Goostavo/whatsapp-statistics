@@ -14,10 +14,11 @@
 const fs = require('fs');
 const whatsapp = require('whatsapp-chat-parser');
 const parseUserList = require('./parseUserList');
-const elonMuskers = require('./analytics/elonMuskers');
 
 // Analytics
 const userMessagesAndZombies = require('./analytics/userMessagesAndZombies');
+const elonMuskers = require('./analytics/elonMuskers');
+const wordCloud = require('./analytics/wordCloud');
 
 console.log('Loading files!')
 const rawHistory = fs.readFileSync('zapzap.txt', 'utf8');
@@ -41,6 +42,7 @@ async function runSync(){
   //Run analytics
   userMessagesAndZombies(users, history);
   elonMuskers(history);
+  wordCloud(history);
 }
 
 runSync();
