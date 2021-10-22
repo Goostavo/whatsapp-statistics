@@ -40,6 +40,7 @@ const mergedWords = [
 
 
 module.exports = function(messages) {
+    console.log('Gerando nuvem de palavras');
     let wordCount = {};
     for (const message of messages) {
         // Split by space removing multiple spaces and blank strings.
@@ -85,6 +86,7 @@ module.exports = function(messages) {
     wordCountArray = wordCountArray.slice(0, 49);
     const csvOutput = obj2csv(wordCountArray);
 
+    console.log('nuvem gerada em: outout/wordcloud.csv');
     fs.writeFileSync('output/wordcloud.csv', csvOutput);
 
 
