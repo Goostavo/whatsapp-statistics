@@ -21,6 +21,8 @@ module.exports = function(history) {
     console.log('\nTotal de Mr./Ms. Gratidão 🙏:', thanksMessages)
 
     let countArray = [];
+    if (thanksMessages > 0){
+
     for (let key in kindPeople){
       countArray.push({
         'author' : key,
@@ -30,13 +32,21 @@ module.exports = function(history) {
     countArray = countArray.sort(compare).reverse();
     // Print top 10 users in friendly format
     console.log('Top 10 Mr./Ms. Gratidão 🙏:')
-    for (let userCount = 0; userCount < 10; userCount++){
+    let topUsers = 10;
+
+    if(thanksMessages <= 10){
+      topUsers = thanksMessages;
+    }
+
+    for (let userCount = 0; userCount < topUsers; userCount++){
       console.log('@' + countArray[userCount].author, ':', countArray[userCount].count)
     }
     console.log();
 
-  }
-
+  
+}else {
+  console.log("que povo mal agradecido");
+     }
   function compare( a, b ) {
     if ( a.count < b.count ){
       return -1;
@@ -46,3 +56,4 @@ module.exports = function(history) {
     }
     return 0;
   }
+}

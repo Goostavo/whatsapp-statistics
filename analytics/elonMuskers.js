@@ -21,6 +21,9 @@ module.exports = function(history) {
   console.log('Total Elon Musk Messages', elonMuskMessages)
   
   let countArray = [];
+  if (elonMuskMessages > 0){
+  
+  
   for (let key in muskersFans){
     countArray.push({
       'author' : key,
@@ -28,13 +31,22 @@ module.exports = function(history) {
     });
   }
   countArray = countArray.sort(compare).reverse();
+  let topUsers = 10;
+
+  if(thanksMessages <= 10){
+    topUsers = thanksMessages;
+  }
+
   // Print top 10 users in friendly format
   console.log('Top 10 fans do Elon Musk por mensagen que citam Elon Musk/Tesla:')
-  for (let userCount = 0; userCount < 10; userCount++){
+  for (let userCount = 0; userCount < topUsers; userCount++){
     console.log('@' + countArray[userCount].author, ':', countArray[userCount].count)
   }
   console.log();
   
+}else{
+
+  console.log('Nenhum fan do elon musk encontrado :(');
 }
 
 function compare( a, b ) {
@@ -45,4 +57,5 @@ function compare( a, b ) {
     return 1;
   }
   return 0;
+}
 }
