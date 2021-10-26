@@ -66,10 +66,10 @@ if (options.help) {
   return;
 }
 
-
 /*
 *   Main code
 */
+const fileName = options.zapzap || 'zapzap.txt';
 
 console.log('Loading files!')
 
