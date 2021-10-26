@@ -38,8 +38,6 @@ module.exports = function(history) {
     for (let userCount = 0; userCount < 10; userCount++){
       console.log('@' + countArray[userCount].author, ':', countArray[userCount].count)
     }
-    console.log();
-
   }
 
   function compare( a, b ) {
