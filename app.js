@@ -59,7 +59,7 @@ if (options.help) {
       optionList: optionDefinitions
     },
     {
-      content: 'Project home: {underline https://github.com/me/example}'
+      content: 'Project home: {underline https://github.com/Goostavo/whatsapp-statistics/}'
     }
   ])
   console.log(usage)
