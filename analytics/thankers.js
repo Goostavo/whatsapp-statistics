@@ -34,7 +34,7 @@ module.exports = function(history) {
 
     countArray = countArray.sort(compare).reverse();
     // Print top 10 users in friendly format
-    console.log('Top ' + maxUsers + ' Mr./Ms. Gratidão 🙏:')
+    console.log(`Top ${maxUsers} Mr./Ms. Gratidão 🙏:`);
     for (let userCount = 0; userCount < maxUsers; userCount++){
       console.log('@' + countArray[userCount].author, ':', countArray[userCount].count)
     }
