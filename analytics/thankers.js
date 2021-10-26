@@ -27,6 +27,11 @@ module.exports = function(history) {
         'count': kindPeople[key]
       });
     }
+    if(countArray.length < 10){
+      console.log('Numero de contatos deve ser maior que 10');
+      return ;
+    }
+
     countArray = countArray.sort(compare).reverse();
     // Print top 10 users in friendly format
     console.log('Top 10 Mr./Ms. Gratidão 🙏:')
