@@ -27,15 +27,15 @@ module.exports = function(history) {
         'count': kindPeople[key]
       });
     }
+    let maxUsers = 10;
     if(countArray.length < 10){
-      console.log('Numero de contatos deve ser maior que 10');
-      return ;
+      maxUsers = countArray.length;
     }
 
     countArray = countArray.sort(compare).reverse();
     // Print top 10 users in friendly format
-    console.log('Top 10 Mr./Ms. Gratidão 🙏:')
-    for (let userCount = 0; userCount < 10; userCount++){
+    console.log('Top ' + maxUsers + ' Mr./Ms. Gratidão 🙏:')
+    for (let userCount = 0; userCount < maxUsers; userCount++){
       console.log('@' + countArray[userCount].author, ':', countArray[userCount].count)
     }
   }
