@@ -11,8 +11,14 @@
 * Users format:
 * ['Person 1', 'Person 2']
 */
+
+// Libs
 const fs = require('fs');
 const whatsapp = require('whatsapp-chat-parser');
+const commandLineArgs = require('command-line-args')
+const commandLineUsage = require('command-line-usage')
+
+// Local Libs
 const parseUserList = require('./parseUserList');
 
 // Analytics
@@ -22,16 +28,48 @@ const wordCloud = require('./analytics/wordCloud');
 const thanks = require('./analytics/thankers');
 const stickers = require('./analytics/stickers')
 
+/*
+*  Command line args definition
+*/
+const optionDefinitions = [
+  {
+    name: 'help',
+    alias: 'h',
+    type: Boolean,
+    description: 'Display this usage guide.'
+  },
+  {
+    name: 'zapzap',
+    alias: 'z',
+    type: String,
+    description: 'Whatsapp history file',
+    typeLabel: '<file>'
+  }
+]
+const options = commandLineArgs(optionDefinitions);
 
-var myArgs = process.argv.slice(2);
-
-if (myArgs[0] == 'help'){
-    console.log('\nzapzap.txt deve ser no seguinte formato:');
-    console.log('‎[15/06/16 14:07:29] Fausto Silva: ta pegando fogo BICHO!');
-    console.log('\nuserList.txt deve conter os contatos separados por virgula')
-    console.log('Thiago Ventura, Fausto, +55 69 99999-9999\n');
-    return ;
+if (options.help) {
+  const usage = commandLineUsage([
+    {
+      header: 'Zap Zap Analytics',
+      content: 'zapzap.txt deve ser no seguinte formato:\n‎[15/06/16 14:07:29] Fausto Silva: ta pegando fogo BICHO!\nuserList.txt deve conter os contatos separados por virgula\nThiago Ventura, Fausto, +55 69 99999-9999'
+    },
+    {
+      header: 'Options',
+      optionList: optionDefinitions
+    },
+    {
+      content: 'Project home: {underline https://github.com/me/example}'
+    }
+  ])
+  console.log(usage)
+  return;
 }
+
+
+/*
+*   Main code
+*/
 
 console.log('Loading files!')
 
@@ -57,15 +95,29 @@ async function runSync(){
     console.log(err);
   }
 
+  history = history.filter((item) => {
+    return item.date > new Date('2020-10-22T00:00:00.000Z');
+  });
+
   console.log('Loaded:', history.length, 'messages.');
   console.log('Loaded:', users.length, 'users.');
   console.log('History start:', history[0].date, 'end:', history[history.length - 1].date);
 
   //Run analytics
   userMessagesAndZombies(users, history);
-  elonMuskers(history);
+  console.log('\n--------------------------------------\n')
+
+  //elonMuskers(history);
+  //console.log('\n--------------------------------------\n')
+
   wordCloud(history);
+  console.log('\n--------------------------------------\n')
+
   thanks(history);
+  console.log('\n--------------------------------------\n')
+
+  stickers(history);
+  console.log('\n--------------------------------------\n')
 }
 
 runSync();
