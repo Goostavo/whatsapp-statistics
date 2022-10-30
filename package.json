@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/Goostavo/whatsapp-statistics#readme",
   "dependencies": {
-    "whatsapp-chat-parser": "^3.0.2"
+    "whatsapp-chat-parser": "^3.2.1"
   }
 }
