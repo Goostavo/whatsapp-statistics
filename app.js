@@ -28,6 +28,9 @@ const wordCloud = require('./analytics/wordCloud');
 const thanks = require('./analytics/thankers');
 const stickers = require('./analytics/stickers')
 
+// Politics Analytics
+const bozoers = require('./analytics/politics/bolsonaroers');
+
 /*
 *  Command line args definition
 */
@@ -117,6 +120,10 @@ async function runSync(){
   console.log('\n--------------------------------------\n')
 
   stickers(history);
+  console.log('\n--------------------------------------\n')
+
+  // Politics analytics
+  bozoers(history);
   console.log('\n--------------------------------------\n')
 }
 
