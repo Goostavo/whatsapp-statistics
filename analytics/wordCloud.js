@@ -10,6 +10,7 @@
 */
 const COLORS = require('../COLORS');
 const fs = require('fs');
+const XLSX = require('xlsx');
 
 
 
@@ -45,7 +46,7 @@ module.exports = function(messages) {
     for (const message of messages) {
         // Split by space removing multiple spaces and blank strings.
         const wordArray = message.message.split(/(\s+)/).filter( function(e) { return e.trim().length > 0; } );
-        
+
         for (let word of wordArray) {
             if (ignoredWords.includes(word)) {
                 continue;
@@ -85,6 +86,7 @@ module.exports = function(messages) {
 
     wordCountArray = wordCountArray.slice(0, 49);
     const csvOutput = obj2csv(wordCountArray);
+    obj2xlsx(wordCountArray);
 
     console.log('nuvem gerada em: outout/wordcloud.csv');
     fs.writeFileSync('output/wordcloud.csv', csvOutput);
@@ -110,3 +112,23 @@ module.exports = function(messages) {
     });
     return rows;
 }
+
+function obj2xlsx (data) {
+  data.forEach((item,i) =>{
+    Object.keys(item).forEach((key)=>{
+      if(data[i][key] != '' && !Number.isNaN(Number(data[i][key]))){
+        data[i][key] = Number((data[i][key]));
+      }
+      if (typeof data[i][key] == 'object') {
+        //TODO: aqui haverá um flatten um dia. a transformação será o nome do {nome do subform}_{nome do campo}
+        delete data[i][key];
+      }
+    });
+  });
+
+  const worksheet = XLSX.utils.json_to_sheet(data);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet);
+  XLSX.writeFile(workbook, 'output/wordcloud.xlsx');
+
+};
