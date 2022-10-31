@@ -6,20 +6,20 @@
 module.exports = function(history) {
     let lulaCite = 0;
     let lulaFans = {};
-    
+
     for (let entry of history){
-      if (entry.message.match(/Lula|lula|molusco|Molusco/)) {
+      if (entry.message.match(/Lula|lula|molusco|Molusco|nine|nove dedos|/)) {
         lulaCite += 1;
-        
+
         if (!lulaFans[entry.author]){
           lulaFans[entry.author] = 0;
         }
         lulaFans[entry.author] += 1;
       }
     }
-    
+
     console.log('Total Lula Messages', lulaCite)
-    
+
     let countArray = [];
     for (let key in lulaFans){
       countArray.push({
@@ -34,9 +34,9 @@ module.exports = function(history) {
       console.log('@' + countArray[userCount].author, ':', countArray[userCount].count)
     }
     console.log();
-    
+
   }
-  
+
   function compare( a, b ) {
     if ( a.count < b.count ){
       return -1;

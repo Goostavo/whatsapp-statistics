@@ -6,20 +6,20 @@
 module.exports = function(history) {
     let bozoCite = 0;
     let bozoFans = {};
-    
+
     for (let entry of history){
-      if (entry.message.match(/Bozo|bozo|bolsonaro|Bolsonaro|Jair|jair|bozonaro|Bozonaro/)) {
+      if (entry.message.match(/Bozo|bozo|bolsonaro|Bolsonaro|Jair|jair|bozonaro|Bozonaro|bobosauro|Bobosauro/)) {
         bozoCite += 1;
-        
+
         if (!bozoFans[entry.author]){
           bozoFans[entry.author] = 0;
         }
         bozoFans[entry.author] += 1;
       }
     }
-    
+
     console.log('Total Bolsonaro Messages', bozoCite)
-    
+
     let countArray = [];
     for (let key in bozoFans){
       countArray.push({
@@ -34,9 +34,9 @@ module.exports = function(history) {
       console.log('@' + countArray[userCount].author, ':', countArray[userCount].count)
     }
     console.log();
-    
+
   }
-  
+
   function compare( a, b ) {
     if ( a.count < b.count ){
       return -1;
