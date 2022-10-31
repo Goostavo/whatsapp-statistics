@@ -1,35 +1,35 @@
 /*
 * Analytics that:
-* Find Bolsonaro Fans
+* Find Lula Fans
 */
 
 module.exports = function(history) {
-    let bozoCite = 0;
-    let bozoFans = {};
+    let lulaCite = 0;
+    let lulaFans = {};
     
     for (let entry of history){
-      if (entry.message.match(/Bozo|bozo|bolsonaro|Bolsonaro|Jair|jair|bozonaro|Bozonaro/)) {
-        bozoCite += 1;
+      if (entry.message.match(/Lula|lula|molusco|Molusco/)) {
+        lulaCite += 1;
         
-        if (!bozoFans[entry.author]){
-          bozoFans[entry.author] = 0;
+        if (!lulaFans[entry.author]){
+          lulaFans[entry.author] = 0;
         }
-        bozoFans[entry.author] += 1;
+        lulaFans[entry.author] += 1;
       }
     }
     
-    console.log('Total Bolsonaro Messages', bozoCite)
+    console.log('Total Lula Messages', lulaCite)
     
     let countArray = [];
-    for (let key in bozoFans){
+    for (let key in lulaFans){
       countArray.push({
         'author' : key,
-        'count': bozoFans[key]
+        'count': lulaFans[key]
       });
     }
     countArray = countArray.sort(compare).reverse();
     // Print top 10 users in friendly format
-    console.log('Top 10 fans do Bolsonaro por mensagem que citam Bolsonaro:')
+    console.log('Top 10 fans do Lula por mensagem que citam Lula:')
     for (let userCount = 0; userCount < 10; userCount++){
       console.log('@' + countArray[userCount].author, ':', countArray[userCount].count)
     }

@@ -30,6 +30,7 @@ const stickers = require('./analytics/stickers')
 
 // Politics Analytics
 const bozoers = require('./analytics/politics/bolsonaroers');
+const lulaers = require('./analytics/politics/lulaers');
 
 /*
 *  Command line args definition
@@ -124,6 +125,9 @@ async function runSync(){
 
   // Politics analytics
   bozoers(history);
+  console.log('\n--------------------------------------\n')
+
+  lulaers(history);
   console.log('\n--------------------------------------\n')
 }
 
