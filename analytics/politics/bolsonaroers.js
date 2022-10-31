@@ -31,7 +31,7 @@ module.exports = function(history) {
     // Print top 10 users in friendly format
     console.log('Top 10 fans do Bolsonaro por mensagem que citam Bolsonaro:')
     for (let userCount = 0; userCount < 10; userCount++){
-      console.log('@' + countArray[userCount].author, ':', countArray[userCount].count)
+      console.log('@' + countArray[userCount]?.author, ':', countArray[userCount]?.count)
     }
     console.log();
 
