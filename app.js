@@ -27,6 +27,7 @@ const elonMuskers = require('./analytics/elonMuskers');
 const wordCloud = require('./analytics/wordCloud');
 const thanks = require('./analytics/thankers');
 const stickers = require('./analytics/stickers')
+const linkers = require('./analytics/linkers');
 
 // Politics Analytics
 const bozoers = require('./analytics/politics/bolsonaroers');
@@ -121,6 +122,9 @@ async function runSync(){
   console.log('\n--------------------------------------\n')
 
   stickers(history);
+  console.log('\n--------------------------------------\n')
+
+  linkers(history);
   console.log('\n--------------------------------------\n')
 
   // Politics analytics
