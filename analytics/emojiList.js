@@ -1,4 +1,4 @@
-let emojis = [
+module.exports = [
   😀,😃,😄,😁,😅,😆,🤣,😂,🙃,😉,😊,😇,😎,🤓,🧐,🥳,
   //Emotional
   🥰,😍,🤩,😘,😗,☺,😚,😙,🥲,
