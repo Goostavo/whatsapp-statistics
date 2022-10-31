@@ -10,7 +10,7 @@
 */
 const COLORS = require('../COLORS');
 const fs = require('fs');
-import * as XLSX from 'xlsx';
+const XLSX = require('xlsx');
 
 
 
@@ -86,6 +86,7 @@ module.exports = function(messages) {
 
     wordCountArray = wordCountArray.slice(0, 49);
     const csvOutput = obj2csv(wordCountArray);
+    obj2xlsx(wordCountArray);
 
     console.log('nuvem gerada em: outout/wordcloud.csv');
     fs.writeFileSync('output/wordcloud.csv', csvOutput);
@@ -112,7 +113,7 @@ module.exports = function(messages) {
     return rows;
 }
 
-export const exportData = (data) => {
+function obj2xlsx (data) {
   data.forEach((item,i) =>{
     Object.keys(item).forEach((key)=>{
       if(data[i][key] != '' && !Number.isNaN(Number(data[i][key]))){
